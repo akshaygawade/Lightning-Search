@@ -1,0 +1,10 @@
+.search-results {
+    position: relative;
+    z-index: 999;
+}
+
+.slds-dropdown {
+    margin:0px;
+    position: relative;
+    max-width: unset;
+}

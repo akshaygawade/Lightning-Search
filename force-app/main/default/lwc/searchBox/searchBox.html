@@ -1,0 +1,26 @@
+<template>
+    <template if:true={objectData}>
+        <div class="slds-form-element slds-form-element__control slds-combobox_container slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_12-of-12 slds-large-size_12-of-12"
+                style="position:relative;">
+                <lightning-input lwc:ref="myelement" class="slds-visible" name="searchboxshow" value={selectedName}
+                    type="search" onkeyup={onkeyUpChange} label="Search when user hits 'Enter' key'" autocomplete="off">
+                </lightning-input>
+                <template lwc:if={results}>
+                    <div id="search-result" style="z-index: 10001; "
+                        class="slds-dropdown slds-col slds-size_1-of-1 slds-medium-size_12-of-12 slds-large-size_12-of-12"
+                        role="listbox">
+                        <ul class="slds-listbox slds-listbox_vertical" role="presentation"
+                            style="max-height:30vh; overflow-y: scroll;">
+                            <template for:each={results} for:item="rec">
+                                <c-search-result fieldstodisplay={fieldsToDisplay}
+                                    onselect={handleSelectionChangeEvent} key={rec.id} record={rec}>
+                                </c-search-result>
+                            </template>
+                        </ul>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </template>
+</template>
