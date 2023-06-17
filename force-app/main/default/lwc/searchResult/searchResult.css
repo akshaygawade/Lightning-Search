@@ -1,0 +1,10 @@
+.slds-listbox__item {
+    cursor: pointer;
+    padding: 0.2rem;
+  }
+  .div_hover{
+      padding:8px;
+  }
+  .div_hover:hover {
+    background-color: #f2f2f2;
+  }

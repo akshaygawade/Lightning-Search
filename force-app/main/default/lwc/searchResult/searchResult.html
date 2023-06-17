@@ -1,0 +1,7 @@
+<template>
+    <li role="presentation" class="slds-listbox__item div_hover">
+        <template for:each={row} for:item="rec">
+            <p key={rec.label} onclick={fireOnSelectionEvent}>{rec.label}</p>
+        </template>
+    </li>
+</template>
