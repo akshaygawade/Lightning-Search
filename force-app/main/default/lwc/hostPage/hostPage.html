@@ -1,0 +1,132 @@
+<template>
+
+    <div class="full-height" style="z-index:1; position:sticky; opacity:1;">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal_large">
+            <div class="slds-modal__container modal-container">
+                <header class="slds-modal__header"
+                    style="background-color: rebeccapurple; color: rgb(0, 0, 0); padding: 1%">
+                    <div>
+                        <div class="slds-modal__content" id="modal-content-id-2">
+                            <div style="background-color: rebeccapurple;overflow-y:hidden;overflow-x:hidden">
+                                <div class="slds-text-heading_large slds-text-align_center" style="color: white"><b>Lightning Record Search.</b></div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div class="slds-modal__content" id="modal-content-id-1">
+                    <div style="background:#f8e6f9;overflow-y:hidden;overflow-x:hidden">
+                        <lightning-layout multiple-rows="true" class="slds-box">
+                            <lightning-layout-item size="12" medium-device-size="6" large-device-size="6"
+                                small-device-size="12">
+                                <template lwc:if={selectedId}>
+                                    <div class="slds-text-heading_large"
+                                        style="color:#000000; padding-left: 20px;padding-top: 10px">
+                                        <b>{selectedRecord.Name.value}</b> </div>
+                                    <div class="slds-text-heading_small"
+                                        style="color:#000000; padding-left: 20px;padding-top: 5px">
+                                        <template lwc:if={selectedRecord.Title}>
+                                            <b> Title : {selectedRecord.Title.value}</b> &nbsp;
+                                        </template>
+                                    </div>
+                                </template>
+                                <template lwc:else>
+                                    <div class="slds-text-heading_small"
+                                        style="color:rgb(0, 0, 0); padding-left: 10px;padding-top: 20px">
+                                        Search Contact with <b>Full Name, Phone, Email, OtherPhone </b> in the search
+                                        box.
+                                    </div>
+                                </template>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="12" medium-device-size="6" large-device-size="6"
+                                small-device-size="12">
+
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_8-of-12"
+                                    style="position:relative;">
+                                    <c-search-box object-name="Contact" fields-to-display="Name,Email,Title"
+                                        onselectedrecord={onRecordSelection}>
+                                    </c-search-box>
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                        <div class="slds-box slds-theme_default">
+                            <template lwc:if={selectedId}>
+                                <div class="slds-grid slds-gutters accordionCont slds-medium-size_12-of-12 slds-large-size_12-of-12" >
+                                    <div class="slds-col">
+                                        <table
+                                            class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-table_header-hidden slds-border_left slds-border_right slds-no-row-hover"
+                                            style="table-layout: fixed;">
+                                            <tbody>
+                                                <tr class="slds-hint-parent">
+                                                    <td class="" style="background: #f8e6f9; color: #000000;">
+                                                        <div class="slds-cell-wrap"><b>Id</b></div>
+                                                    </td>
+                                                    <td style="width: 50%;">
+                                                        <div class="slds-cell-wrap"> {selectedRecord.Id}</div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="slds-hint-parent">
+                                                    <td class="" style="background: #f8e6f9; color: #000000">
+                                                        <div class="slds-cell-wrap"><b>Phone</b></div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="slds-cell-wrap">{selectedRecord.Phone.value}</div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="slds-hint-parent">
+                                                    <td class="" style="background: #f8e6f9; color: #000000">
+                                                        <div class="slds-cell-wrap"><b>Email</b></div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="slds-cell-wrap">{selectedRecord.Email.value}</div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="slds-col">
+                                        <table
+                                            class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-table_header-hidden slds-border_left slds-border_right slds-no-row-hover"
+                                            style="table-layout: fixed;">
+                                            <tbody>
+                                                <tr class="slds-hint-parent">
+                                                    <td class="" style="background: #f8e6f9; color: #000000">
+                                                        <div class="slds-cell-wrap"><b>CleanStatus</b></div>
+                                                    </td>
+                                                    <td style="width: 50%;">
+                                                        <div class="slds-cell-wrap">{selectedRecord.CleanStatus.value}</div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="slds-hint-parent">
+                                                    <td class="" style="background: #f8e6f9; color: #000000">
+                                                        <div class="slds-cell-wrap"><b>Title</b></div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="slds-cell-wrap">{selectedRecord.Title.value}</div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="slds-hint-parent">
+                                                    <td class="" style="background: #f8e6f9; color: #000000">
+                                                        <div class="slds-cell-wrap"><b>CreatedDate </b></div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="slds-cell-wrap">{selectedRecord.CreatedDate.value}</div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </template>
+                            <template lwc:else>
+                                <div style="background:white;overflow-y:hidden;overflow-x:hidden">
+                                    <div class="slds-text-heading_medium slds-text-align_center"> No Record selected.</div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</template>
